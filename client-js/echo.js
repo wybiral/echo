@@ -100,5 +100,13 @@ SecretKey.generate = () => {
 Import SecretKey from raw ArrayBuffer.
 */
 SecretKey.import = raw => {
-    return Promise.resolve('not implemented');
+    return crypto.subtle.importKey(
+        'raw',
+        raw,
+        {name: 'AES-CBC'},
+        true,
+        ['encrypt', 'decrypt']
+    ).then(key => {
+        return new SecretKey(key);
+    });
 };
