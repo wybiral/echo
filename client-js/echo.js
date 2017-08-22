@@ -73,7 +73,11 @@ class SecretKey {
     Encrypt ArrayBuffer plaintext with SecretKey and iv (also ArrayBuffer).
     */
     encrypt(iv, plaintext) {
-        return Promise.resolve('not implemented');
+        return crypto.subtle.encrypt(
+            {name: "AES-CBC", iv: iv},
+            this.aesKey,
+            plaintext
+        );
     }
     /*
     Decrypt ArrayBuffer ciphertext with SecretKey and iv (also ArrayBuffer).
