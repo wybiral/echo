@@ -60,3 +60,45 @@ const encode = {
         },
     },
 };
+
+
+/*
+SecretKey object used for symmetric-key crypography.
+*/
+class SecretKey {
+    constructor(key) {
+        this.aesKey = key;
+    }
+    /*
+    Encrypt ArrayBuffer plaintext with SecretKey and iv (also ArrayBuffer).
+    */
+    encrypt(iv, plaintext) {
+        return Promise.resolve('not implemented');
+    }
+    /*
+    Decrypt ArrayBuffer ciphertext with SecretKey and iv (also ArrayBuffer).
+    */
+    decrypt(iv, ciphertext) {
+        return Promise.resolve('not implemented');
+    }
+    /*
+    Export SecretKey to raw ArrayBuffer.
+    */
+    export() {
+        return Promise.resolve('not implemented');
+    }
+}
+
+/*
+Generate a new random SecretKey.
+*/
+SecretKey.generate = () => {
+    return Promise.resolve('not implemented');
+};
+
+/*
+Import SecretKey from raw ArrayBuffer.
+*/
+SecretKey.import = raw => {
+    return Promise.resolve('not implemented');
+};

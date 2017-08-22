@@ -1,3 +1,6 @@
+const AES_KEY = 'fn+Qnu0P5I6alrqUYAU2ToZQt5MAjl+RSA0nOPtR9R8=';
+const AES_IV = 'kBNmAwfcb3L2W/IvcBbjbA==';
+
 describe('encode', () => {
     describe('base64', () => {
         const input = 'SGVsbG8gd29ybGQh';
@@ -49,6 +52,50 @@ describe('encode', () => {
         });
         it('fromBuffer', () => {
             expect(encode.utf8.fromBuffer(output)).toEqual(input);
+        });
+    });
+});
+
+describe('SecretKey', () => {
+    let key;
+    beforeAll(done => {
+        const buffer = encode.base64.toBuffer(AES_KEY);
+        SecretKey.import(buffer).then(k => {
+            key = k;
+            done();
+        });
+    });
+    it('import', () => {
+        expect(key).toEqual(jasmine.any(SecretKey));
+    });
+    it('export', done => {
+        key.export().then(raw => {
+            expect(encode.base64.fromBuffer(raw)).toEqual(AES_KEY);
+            done();
+        });
+    });
+    it('generate', done => {
+        SecretKey.generate().then(k => {
+            expect(k).toEqual(jasmine.any(SecretKey));
+            done();
+        });
+    });
+    it('encrypt', done => {
+        const buffer = encode.string.toBuffer('Hello world!');
+        const iv = encode.base64.toBuffer(AES_IV);
+        key.encrypt(iv, buffer).then(ciphertext => {
+            const cipher64 = encode.base64.fromBuffer(ciphertext);
+            expect(cipher64).toEqual('SjBvLNOlEPxpZSu0PIzjPg==');
+            done();
+        });
+    });
+    it('decrypt', done => {
+        const buffer = encode.base64.toBuffer('SjBvLNOlEPxpZSu0PIzjPg==');
+        const iv = encode.base64.toBuffer(AES_IV);
+        key.decrypt(iv, buffer).then(plaintext => {
+            const string = encode.string.fromBuffer(plaintext);
+            expect(string).toEqual('Hello world!');
+            done();
         });
     });
 });
