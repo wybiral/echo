@@ -137,7 +137,8 @@ class PrivateKey {
         return Promise.resolve('not implemented');
     }
     export() {
-        return Promise.resolve('not implemented');
+        const key = this.rsaPrivateKey;
+        return crypto.subtle.exportKey('pkcs8', key);
     }
     unwrapKey(wrappedKey) {
         return Promise.resolve('not implemented');
