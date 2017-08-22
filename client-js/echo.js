@@ -63,7 +63,7 @@ const encode = {
 
 
 /*
-SecretKey object used for symmetric-key crypography.
+SecretKey object used for symmetric-key cryptography.
 */
 class SecretKey {
     constructor(key) {
@@ -124,3 +124,31 @@ SecretKey.import = raw => {
         return new SecretKey(key);
     });
 };
+
+
+/*
+PrivateKey object used for asymmetric-key cryptography.
+*/
+class PrivateKey {
+    constructor(key) {
+        this.rsaPrivateKey = key;
+    }
+    getPublicKey() {
+        return Promise.resolve('not implemented');
+    }
+    export() {
+        return Promise.resolve('not implemented');
+    }
+    unwrapKey(wrappedKey) {
+        return Promise.resolve('not implemented');
+    }
+}
+
+PrivateKey.generate = () => {
+    return Promise.resolve('not implemented');
+};
+
+PrivateKey.import = raw => {
+    return Promise.resolve('not implemented');
+};
+
