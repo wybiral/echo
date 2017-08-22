@@ -208,7 +208,13 @@ class PublicKey {
         return crypto.subtle.exportKey('spki', key);
     }
     wrapKey(secretKey) {
-        return Promise.resolve('not implemented');
+        return secretKey.export().then(raw => {
+            return crypto.subtle.encrypt(
+                {name: 'RSA-OAEP'},
+                this.rsaPublicKey,
+                raw
+            );
+        });
     }
 }
 
