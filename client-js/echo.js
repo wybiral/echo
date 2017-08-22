@@ -212,5 +212,13 @@ class PublicKey {
 }
 
 PublicKey.import = raw => {
-    return Promise.resolve('not implemented');
+    return crypto.subtle.importKey(
+        'spki',
+        raw,
+        {name: 'RSA-OAEP', hash: {name: 'SHA-256'}},
+        true,
+        ['encrypt']
+    ).then(key => {
+        return new PublicKey(key);
+    });
 };
