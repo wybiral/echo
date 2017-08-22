@@ -173,7 +173,14 @@ class PrivateKey {
 }
 
 PrivateKey.generate = () => {
-    return Promise.resolve('not implemented');
+    return crypto.subtle.generateKey({
+        hash: {name: 'SHA-256'},
+        modulusLength: 4096,
+        name: 'RSA-OAEP',
+        publicExponent: new Uint8Array([0x01, 0x00, 0x01])
+    }, true, ['encrypt', 'decrypt']).then(key => {
+        return new PrivateKey(key.privateKey);
+    });
 };
 
 PrivateKey.import = raw => {
