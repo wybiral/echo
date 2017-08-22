@@ -134,7 +134,28 @@ class PrivateKey {
         this.rsaPrivateKey = key;
     }
     getPublicKey() {
-        return Promise.resolve('not implemented');
+        const key = this.rsaPrivateKey;
+        // jwk object
+        const data = {
+            alg: 'RSA-OAEP-256',
+            ext: true,
+            key_ops: ['encrypt'],
+            kty: 'RSA',
+        };
+        return crypto.subtle.exportKey('jwk', key).then(jwk => {
+            // Copy e and n from PrivateKey
+            data.e = jwk.e;
+            data.n = jwk.n;
+            return crypto.subtle.importKey(
+                'jwk',
+                data,
+                {name: 'RSA-OAEP', hash: {name: 'SHA-256'}},
+                true,
+                ['encrypt']
+            );
+        }).then(key => {
+            return new PublicKey(key);
+        });
     }
     export() {
         const key = this.rsaPrivateKey;
