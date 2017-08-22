@@ -141,7 +141,13 @@ class PrivateKey {
         return crypto.subtle.exportKey('pkcs8', key);
     }
     unwrapKey(wrappedKey) {
-        return Promise.resolve('not implemented');
+        return crypto.subtle.decrypt(
+            {name: 'RSA-OAEP'},
+            this.rsaPrivateKey,
+            wrappedKey
+        ).then(raw => {
+            return SecretKey.import(raw);
+        });
     }
 }
 
