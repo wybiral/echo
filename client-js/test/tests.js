@@ -124,7 +124,8 @@ describe('PrivateKey', () => {
     });
     it('getPublicKey', done => {
         key.getPublicKey().then(pub => {
-            expect(key).toEqual(jasmine.any(PublicKey));
+            expect(pub).toEqual(jasmine.any(PublicKey));
+            done();
         });
     });
     it('unwrapKey', done => {
