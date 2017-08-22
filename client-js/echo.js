@@ -204,7 +204,8 @@ class PublicKey {
         this.rsaPublicKey = key;
     }
     export() {
-        return Promise.resolve('not implemented');
+        const key = this.rsaPublicKey;
+        return crypto.subtle.exportKey('spki', key);
     }
     wrapKey(secretKey) {
         return Promise.resolve('not implemented');
