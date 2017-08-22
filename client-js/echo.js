@@ -83,7 +83,11 @@ class SecretKey {
     Decrypt ArrayBuffer ciphertext with SecretKey and iv (also ArrayBuffer).
     */
     decrypt(iv, ciphertext) {
-        return Promise.resolve('not implemented');
+        return crypto.subtle.decrypt(
+            {name: "AES-CBC", iv: iv},
+            this.aesKey,
+            ciphertext
+        );
     }
     /*
     Export SecretKey to raw ArrayBuffer.
