@@ -93,7 +93,13 @@ class SecretKey {
 Generate a new random SecretKey.
 */
 SecretKey.generate = () => {
-    return Promise.resolve('not implemented');
+    return crypto.subtle.generateKey(
+        {name: 'AES-CBC', length: 256},
+        true,
+        ['encrypt', 'decrypt']
+    ).then(key => {
+        return new SecretKey(key);
+    });
 };
 
 /*
