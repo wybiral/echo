@@ -5,8 +5,10 @@ objects.
 const encode = {
     base64: {
         fromBuffer: buffer => {
+            return btoa(encode.string.fromBuffer(buffer));
         },
         toBuffer: base64 => {
+            return encode.string.toBuffer(atob(base64));
         },
     },
     hex: {
