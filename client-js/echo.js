@@ -195,6 +195,7 @@ PrivateKey.import = raw => {
     });
 };
 
+
 /*
 PublicKey object used for asymmetric-key cryptography.
 */
@@ -202,4 +203,14 @@ class PublicKey {
     constructor(key) {
         this.rsaPublicKey = key;
     }
+    export() {
+        return Promise.resolve('not implemented');
+    }
+    wrapKey(secretKey) {
+        return Promise.resolve('not implemented');
+    }
 }
+
+PublicKey.import = raw => {
+    return Promise.resolve('not implemented');
+};

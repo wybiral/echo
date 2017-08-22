@@ -138,3 +138,33 @@ describe('PrivateKey', () => {
         });
     });
 });
+
+describe('PublicKey', () => {
+    let key;
+    beforeAll(done => {
+        const buffer = encode.base64.toBuffer(PUBLIC_KEY);
+        PublicKey.import(buffer).then(k => {
+            key = k;
+            done();
+        });
+    });
+    it('import', () => {
+        expect(key).toEqual(jasmine.any(PublicKey));
+    });
+    it('export', done => {
+        key.export().then(buffer => {
+            const base64 = encode.base64.fromBuffer(buffer);
+            expect(base64).toEqual(PUBLIC_KEY);
+            done();
+        });
+    });
+    it('wrapKey', done => {
+        const buffer = encode.base64.toBuffer(AES_KEY);
+        SecretKey.import(buffer).then(aesKey => {
+            key.wrapKey(aesKey).then(wrapped => {
+                expect(new Uint8Array(wrapped).length).toEqual(512);
+                done();
+            });
+        });
+    });
+});
