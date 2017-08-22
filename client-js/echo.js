@@ -85,7 +85,7 @@ class SecretKey {
     Export SecretKey to raw ArrayBuffer.
     */
     export() {
-        return Promise.resolve('not implemented');
+        return crypto.subtle.exportKey('raw', this.aesKey);
     }
 }
 
