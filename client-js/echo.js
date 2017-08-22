@@ -51,8 +51,12 @@ const encode = {
     },
     utf8: {
         fromBuffer: buffer => {
+            const decoder = new TextDecoder('utf-8');
+            return decoder.decode(buffer);
         },
         toBuffer: utf8 => {
+            const encoder = new TextEncoder('utf-8');
+            return encoder.encode(utf8);
         },
     },
 };
