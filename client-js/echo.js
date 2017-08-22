@@ -30,8 +30,21 @@ const encode = {
     },
     string: {
         fromBuffer: buffer => {
+            const array = new Uint8Array(buffer);
+            const len = array.length;
+            let string = '';
+            for (let i = 0; i < len; i++) {
+                string += String.fromCharCode(array[i]);
+            }
+            return string;
         },
         toBuffer: string => {
+            const len = string.length;
+            const array = new Uint8Array(len);
+            for (let i = 0; i < len; i++) {
+                array[i] = string.charCodeAt(i);
+            }
+            return array.buffer;
         },
     },
     utf8: {
