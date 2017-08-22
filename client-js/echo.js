@@ -149,6 +149,14 @@ PrivateKey.generate = () => {
 };
 
 PrivateKey.import = raw => {
-    return Promise.resolve('not implemented');
+    return crypto.subtle.importKey(
+        'pkcs8',
+        raw,
+        {name: 'RSA-OAEP', hash: {name: 'SHA-256'}},
+        true,
+        ['decrypt']
+    ).then(key => {
+        return new PrivateKey(key);
+    });
 };
 
