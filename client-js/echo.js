@@ -171,7 +171,21 @@ class PrivateKey {
         });
     }
     sign(data) {
-        return Promise.resolve('not implemented');
+        return this.export().then(pkcs8 => {
+            return crypto.subtle.importKey(
+                'pkcs8',
+                pkcs8,
+                {name: 'RSASSA-PKCS1-v1_5', hash: {name: 'SHA-256'}},
+                true,
+                ['sign']
+            );
+        }).then(key => {
+            return window.crypto.subtle.sign(
+                {name: 'RSASSA-PKCS1-v1_5'},
+                key,
+                data
+            );
+        });
     }
 }
 
