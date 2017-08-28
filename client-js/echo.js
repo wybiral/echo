@@ -170,6 +170,9 @@ class PrivateKey {
             return SecretKey.import(raw);
         });
     }
+    sign(data) {
+        return Promise.resolve('not implemented');
+    }
 }
 
 PrivateKey.generate = () => {
@@ -215,6 +218,9 @@ class PublicKey {
                 raw
             );
         });
+    }
+    verify(signature, data) {
+        return Promise.resolve('not implemented');
     }
 }
 

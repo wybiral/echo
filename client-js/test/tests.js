@@ -3,6 +3,7 @@ const AES_IV = 'kBNmAwfcb3L2W/IvcBbjbA==';
 const PRIVATE_KEY = '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';
 const PUBLIC_KEY = 'MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAtxSSW4998MKDdgzt63YTQ0R+wq4sGHq1cP9cnimihNn36r7x6y048geLCDDOIQ5r6EDuOUkbN43CPU5Csdfshn+gVW5i3hBi/TYLnh1MRjEmFItwl/L32nyUQEBX9KKOt0VBi24g26XYh2RiR9p27V0c+prX6agGmMp9Dg7cNNVjaGvsXG1kMDnXkn4T9wU5mRPw8eOU8P2Q9MuRS5XrtfDFoNNtAZH8ZvkTCs70qajBtfIcXit7e6SKqpUQ8MZocZg5TOuH/JBMQweW3sYYNcmWztcrvdEqFjXkL6F4AnmHCL8QokIn6bnmEmgitHJoIyjn6V1hHCjpnnClCe99Q7HMNvF/Hz41K7y/TnQduGU2W23gNEmn9sjF/7RnJ7Ih9Hhmdp+vCFjZ/NYCEP8jSmtZT4C8o0Z9qSEnoIl3X6FgTlup4R0CZHjJUbCMvieET2/eR8JTOhGaLEYCdvqSUXxckMCkrTiODWAmwYxDJZMXlo10HiBDH3NCntzmxR5UpELPYXGHs4HkglRF2h4U18KSAHHWYSAZkK6BR/NEgFpsVq79eOqPNEJU4EMfJe685qWK5yEy1kJjIEU5DANPP7LYSImrtyimS/KVJiAPLT5SzEVwk2Xv+qhKIHCBRYIO4OR+r5UMU13DcCgpGr55tYceMPkJ9lNzKjG7kyD1IlsCAwEAAQ==';
 const WRAPPED_KEY = 'rnAIsFLrclZ1lnleC5tG/UM+DjDlcraaKEermodeCJJw32tyn4gFARDnL6Am79bmV/XSgf59lfeV/lqepg+e75u9dPBQZoFWEv2bFMhOmzb7VW1GWCMJc03wa9MdIzAh7VA32e4CVcFOsdbD17oEIkty7oBujgk+jqczGS6rMCaWyqXc0b2ctirPypL/dNmlfPurigVhEQYt09Tu0unFvtMh1+5do2Zmq8ZZqvU2VbKZ7dstvyjrJfrYjTn0gRTS7JqP/UqCjuSBsduDwIHd4joRUSxsul+1hlr0+6c93ZxD2BZPqzX/WlcUoiSnjCVFprEkbinq0Zm9lmRMUDTkVuXeB0XuNJPA4Xf0O6oTJkLT3d/l5J27a4NlSVp/YDemUQLyBq+KcuRsdB8Ha2Ba5vHbquuz6SJN3MQvW1nvm4K4n22YenOd4/jMu0BPeVGLLLvwJqRSayqPopbOs7IF3AtDvxDuLisQ2iY0wXqpuAR/LzJtttEukdu17FUBh+CvH+SERRcwQON5rCMW6PNm1NUo3ZUsgSHvTcVllcfm3/a1T5h+LCDQYsGDP9mf6wJYuu+lpWpfsjMAnkezKRCBo1OttwyU68ou3fk2Ji8MRZo8r6CPKLsBWPfUkqG5Oi8X8gUZTZc26MAj1q1lz4cyZCjE1dfynIyE1KmZsrF16T0=';
+const SIGNATURE = 'SPFYqklktDySIvztGRcVfpFz8Ppk242nFM8ee/A6IdRaWQZzHzEuf/klP1SKW5o2SQdW5qNqp2meBUK+eG0plEikr4R+z3JhDQrqSnYcAwzx4AgEEUKYcraKnJ46DrR4uGaUBnpCGbi/4bXZtIOwF4g1RJ8jP+jBK6k1cttTPzjJGyWYPfiuUUR2q4lsot952QIrzhzzXNMrv+WM4etSXM2MWad4WXY8a/nG31hszoG2ksu1LA8Ge0dlckOuQppBQ7SjgLaTm2mjPBX5RDFpe95lQQYHFSBOt+BUhMDvz8ElGAqsyYYXc9F5Gj55DFtg3+bQTihWvE3lisjMKr8imllaXkM6iumewO81PI+7xD3XTbmZt69Jd5juR2vIRES0Mt4Cs4ixB5/7L3ejFfwN6+ncOEt5Dls68Pni2WCGEUSzoAdw2SIhh6jzptXArK2BxC4FFPAbJsVqVh/rfZJ8Nx/xKqV4aglEY50deZDF10D/NxA0k+s2g5hhEl4rfgvcL+p9GONcS2DofAJMeD+rc8WJ21n2JH5QWMl8ZIwg3DoJO40sxCpuK57Lkaio+mR4tRz/hlHuYBQX6kWGrPe9ozb1HjNlkFiCfCZEdMfpECOpFaG7IZtM4R4tfXF8MpbVqa1Y0HSXpx9F2tNwNPjFYNX3mpA5rav7pchjv9IRZMk=';
 
 describe('encode', () => {
     describe('base64', () => {
@@ -137,6 +138,13 @@ describe('PrivateKey', () => {
             });
         });
     });
+    it('sign', done => {
+        const message = encode.string.toBuffer('Hello world!');
+        key.sign(message).then(signature => {
+            expect(encode.base64.fromBuffer(signature)).toEqual(SIGNATURE);
+            done();
+        });
+    });
 });
 
 describe('PublicKey', () => {
@@ -163,6 +171,18 @@ describe('PublicKey', () => {
         SecretKey.import(buffer).then(aesKey => {
             key.wrapKey(aesKey).then(wrapped => {
                 expect(new Uint8Array(wrapped).length).toEqual(512);
+                done();
+            });
+        });
+    });
+    it('verify', done => {
+        const message = encode.string.toBuffer('Hello world!');
+        const message2 = encode.string.toBuffer('Hello world?');
+        const signature = encode.base64.toBuffer(SIGNATURE);
+        key.verify(signature, message).then(valid => {
+            expect(valid).toEqual(true);
+            key.verify(signature, message2).then(valid2 => {
+                expect(valid2).toEqual(false);
                 done();
             });
         });
