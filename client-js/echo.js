@@ -234,7 +234,22 @@ class PublicKey {
         });
     }
     verify(signature, data) {
-        return Promise.resolve('not implemented');
+        return this.export().then(spki => {
+            return crypto.subtle.importKey(
+                'spki',
+                spki,
+                {name: 'RSASSA-PKCS1-v1_5', hash: {name: 'SHA-256'}},
+                true,
+                ['verify']
+            );
+        }).then(key => {
+            return window.crypto.subtle.verify(
+                {name: 'RSASSA-PKCS1-v1_5'},
+                key,
+                signature,
+                data
+            );
+        });
     }
 }
 
