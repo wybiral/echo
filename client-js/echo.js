@@ -133,6 +133,9 @@ class PrivateKey {
     constructor(key) {
         this.rsaPrivateKey = key;
     }
+    /*
+    Extract PublicKey.
+    */
     getPublicKey() {
         const key = this.rsaPrivateKey;
         // jwk object
@@ -157,10 +160,16 @@ class PrivateKey {
             return new PublicKey(key);
         });
     }
+    /*
+    Export to PKCS8 format ArrayBuffer.
+    */
     export() {
         const key = this.rsaPrivateKey;
         return crypto.subtle.exportKey('pkcs8', key);
     }
+    /*
+    Unwrap a SecretKey that was wrapped by PublicKey.
+    */
     unwrapKey(wrappedKey) {
         return crypto.subtle.decrypt(
             {name: 'RSA-OAEP'},
@@ -170,6 +179,9 @@ class PrivateKey {
             return SecretKey.import(raw);
         });
     }
+    /*
+    Return signature of ArrayBuffer data.
+    */
     sign(data) {
         return this.export().then(pkcs8 => {
             return crypto.subtle.importKey(
@@ -189,6 +201,9 @@ class PrivateKey {
     }
 }
 
+/*
+Generate a new PrivateKey.
+*/
 PrivateKey.generate = () => {
     return crypto.subtle.generateKey({
         hash: {name: 'SHA-256'},
@@ -200,6 +215,9 @@ PrivateKey.generate = () => {
     });
 };
 
+/*
+Import PrivateKey from PKCS8 ArrayBuffer.
+*/
 PrivateKey.import = raw => {
     return crypto.subtle.importKey(
         'pkcs8',
@@ -220,10 +238,16 @@ class PublicKey {
     constructor(key) {
         this.rsaPublicKey = key;
     }
+    /*
+    Export to SPKI format ArrayBuffer.
+    */
     export() {
         const key = this.rsaPublicKey;
         return crypto.subtle.exportKey('spki', key);
     }
+    /*
+    Wrap SecretKey and return as ArrayBuffer.
+    */
     wrapKey(secretKey) {
         return secretKey.export().then(raw => {
             return crypto.subtle.encrypt(
@@ -233,6 +257,9 @@ class PublicKey {
             );
         });
     }
+    /*
+    Verify true/false ArrayBuffer signature and data.
+    */
     verify(signature, data) {
         return this.export().then(spki => {
             return crypto.subtle.importKey(
@@ -253,6 +280,9 @@ class PublicKey {
     }
 }
 
+/*
+Import PublicKey from SPKI ArrayBuffer.
+*/
 PublicKey.import = raw => {
     return crypto.subtle.importKey(
         'spki',
